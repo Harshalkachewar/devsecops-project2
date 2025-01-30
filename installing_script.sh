@@ -47,7 +47,7 @@ sudo mv prometheus promtool /usr/local/bin/
 sudo mv consoles/ console_libraries/ /etc/prometheus/
 sudo mv prometheus.yml /etc/prometheus/prometheus.yml
 sudo chown -R prometheus:prometheus /etc/prometheus/ /data/
-sudo nano /etc/systemd/system/prometheus.service
+
 
 echo "[Unit]
 Description=Prometheus
@@ -72,7 +72,7 @@ ExecStart=/usr/local/bin/prometheus \
   --web.enable-lifecycle
 
 [Install]
-WantedBy=multi-user.target" >  /etc/systemd/system/prometheus.service
+WantedBy=multi-user.target" >>  /etc/systemd/system/prometheus.service
 sudo systemctl enable prometheus
 sudo systemctl start prometheus
 sudo systemctl status prometheus
@@ -101,7 +101,7 @@ RestartSec=5s
 ExecStart=/usr/local/bin/node_exporter --collector.logind
 
 [Install]
-WantedBy=multi-user.target" > /etc/systemd/system/node_exporter.service
+WantedBy=multi-user.target" >> /etc/systemd/system/node_exporter.service
 
 sudo systemctl enable node_exporter
 sudo systemctl start node_exporter
